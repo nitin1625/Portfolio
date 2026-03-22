@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Nitin Sharma — AI Engineer</title>
+<title>Loading...</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -11,211 +11,93 @@
   --ff-display: 'Syne', 'Trebuchet MS', sans-serif;
   --ff-mono: 'DM Mono', 'Courier New', monospace;
   --ff-body: 'DM Sans', 'Segoe UI', sans-serif;
-  --bg:      #060810;
-  --bg2:     #0d1017;
-  --bg3:     #131722;
-  --surface: #1a1f2e;
-  --border:  rgba(255,255,255,0.06);
-  --borderh: rgba(99,214,168,0.3);
-  --text:  #dde2f0;
-  --muted: #606880;
-  --dim:   #3a4055;
-  --g:  #63d6a8;
-  --b:  #4fb8f0;
-  --y:  #f0c84b;
-  --r:  #f06b6b;
+  --bg:  #060810; --bg2: #0d1017; --bg3: #131722; --surface: #1a1f2e;
+  --border: rgba(255,255,255,0.06); --borderh: rgba(99,214,168,0.3);
+  --text: #dde2f0; --muted: #606880; --dim: #3a4055;
+  --g: #63d6a8; --b: #4fb8f0; --y: #f0c84b; --r: #f06b6b;
   --glow: 0 0 40px rgba(99,214,168,0.12);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body {
+body { background: var(--bg); color: var(--text); font-family: var(--ff-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; cursor: none; }
+
+/* LOADER */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
   background: var(--bg);
-  color: var(--text);
-  font-family: var(--ff-body);
-  font-size: 16px;
-  line-height: 1.7;
-  overflow-x: hidden;
-  cursor: none;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+  transition: opacity 0.4s, visibility 0.4s;
 }
+#loader.hide { opacity: 0; visibility: hidden; }
+.loader-logo { font-family: var(--ff-display); font-size: 28px; font-weight: 800; color: var(--text); }
+.loader-logo span { color: var(--g); }
+.loader-bar { width: 160px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.loader-bar::after { content: ''; display: block; height: 100%; width: 0; background: var(--g); animation: load 0.8s ease forwards; }
+@keyframes load { to { width: 100%; } }
 
 /* CURSOR */
-#cursor {
-  position: fixed; z-index: 9999;
-  width: 10px; height: 10px;
-  background: var(--g); border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%,-50%);
-  mix-blend-mode: difference;
-}
-#cursor-ring {
-  position: fixed; z-index: 9998;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(99,214,168,0.4);
-  border-radius: 50%; pointer-events: none;
-  transform: translate(-50%,-50%);
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
-}
+#cursor { position: fixed; z-index: 9999; width: 10px; height: 10px; background: var(--g); border-radius: 50%; pointer-events: none; transform: translate(-50%,-50%); mix-blend-mode: difference; }
+#cursor-ring { position: fixed; z-index: 9998; width: 36px; height: 36px; border: 1px solid rgba(99,214,168,0.4); border-radius: 50%; pointer-events: none; transform: translate(-50%,-50%); transition: width 0.2s, height 0.2s, opacity 0.2s; }
 
 /* GRID BG */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0;
-  background-image:
-    linear-gradient(rgba(99,214,168,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,214,168,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
+body::before { content: ''; position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(99,214,168,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(99,214,168,0.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
 
 /* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 56px;
-  background: rgba(6,8,16,0.88);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: var(--ff-display);
-  font-size: 18px; font-weight: 800; letter-spacing: -0.5px;
-  color: var(--text); text-decoration: none;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 56px; background: rgba(6,8,16,0.88); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--ff-display); font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
 .nav-logo span { color: var(--g); }
 .nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a {
-  font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted); text-decoration: none;
-  transition: color 0.2s;
-}
+.nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--g); }
-.nav-btn {
-  font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; padding: 9px 22px;
-  background: transparent; border: 1px solid var(--g);
-  border-radius: 6px; color: var(--g); text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
+.nav-btn { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 9px 22px; background: transparent; border: 1px solid var(--g); border-radius: 6px; color: var(--g); text-decoration: none; transition: background 0.2s, color 0.2s; }
 .nav-btn:hover { background: var(--g); color: var(--bg); }
 
 /* LAYOUT */
 section { position: relative; z-index: 1; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 56px; }
 .sec { padding: 120px 0; }
-
-.tag-label {
-  display: inline-block; font-family: var(--ff-mono);
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--g); margin-bottom: 16px;
-}
+.tag-label { display: inline-block; font-family: var(--ff-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g); margin-bottom: 16px; }
 .tag-label::before { content: '// '; opacity: 0.5; }
-
-h2.heading {
-  font-family: var(--ff-display);
-  font-size: clamp(36px, 4.5vw, 58px); font-weight: 800;
-  letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px;
-}
+h2.heading { font-family: var(--ff-display); font-size: clamp(36px, 4.5vw, 58px); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px; }
 .subtext { font-size: 16px; color: var(--muted); max-width: 500px; line-height: 1.85; }
 
 /* HERO */
 #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
 .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%; }
-
-.status-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--ff-mono); font-size: 11px; letter-spacing: 0.08em;
-  color: var(--g); background: rgba(99,214,168,0.07);
-  border: 1px solid rgba(99,214,168,0.18); border-radius: 20px;
-  padding: 7px 16px; margin-bottom: 32px;
-}
-.s-dot {
-  width: 7px; height: 7px; background: var(--g); border-radius: 50%;
-  animation: breathe 2s ease-in-out infinite;
-}
-@keyframes breathe {
-  0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(99,214,168,0.4); }
-  50% { opacity:0.6; box-shadow: 0 0 0 5px rgba(99,214,168,0); }
-}
-
-.hero-title {
-  font-family: var(--ff-display);
-  font-size: clamp(52px, 6vw, 82px); font-weight: 800;
-  letter-spacing: -3px; line-height: 1.0; margin-bottom: 28px;
-}
+.status-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ff-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--g); background: rgba(99,214,168,0.07); border: 1px solid rgba(99,214,168,0.18); border-radius: 20px; padding: 7px 16px; margin-bottom: 32px; }
+.s-dot { width: 7px; height: 7px; background: var(--g); border-radius: 50%; animation: breathe 2s ease-in-out infinite; }
+@keyframes breathe { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(99,214,168,0.4)} 50%{opacity:.6;box-shadow:0 0 0 5px rgba(99,214,168,0)} }
+.hero-title { font-family: var(--ff-display); font-size: clamp(52px, 6vw, 82px); font-weight: 800; letter-spacing: -3px; line-height: 1.0; margin-bottom: 28px; }
 .hero-title .acc { color: var(--g); }
 .hero-title .dm { color: var(--dim); }
-
 .hero-desc { font-size: 17px; color: var(--muted); line-height: 1.85; max-width: 440px; margin-bottom: 44px; }
 .hero-desc strong { color: var(--text); font-weight: 500; }
-
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-p {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 30px; background: var(--g); color: var(--bg);
-  font-family: var(--ff-body); font-size: 14px; font-weight: 600;
-  border-radius: 8px; text-decoration: none; border: none;
-  transition: opacity 0.2s, transform 0.15s; cursor: pointer;
-}
-.btn-p:hover { opacity: 0.85; transform: translateY(-2px); }
-.btn-o {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 30px; background: transparent;
-  border: 1px solid var(--border); color: var(--muted);
-  font-family: var(--ff-body); font-size: 14px; font-weight: 500;
-  border-radius: 8px; text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
-}
+.btn-p { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; background: var(--g); color: var(--bg); font-family: var(--ff-body); font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; border: none; transition: opacity 0.2s, transform 0.15s; cursor: pointer; }
+.btn-p:hover { opacity: .85; transform: translateY(-2px); }
+.btn-o { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: var(--ff-body); font-size: 14px; font-weight: 500; border-radius: 8px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
 .btn-o:hover { border-color: var(--g); color: var(--g); }
 
 /* TERMINAL */
-.terminal {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden;
-  font-family: var(--ff-mono); font-size: 13px;
-  box-shadow: var(--glow), 0 40px 80px rgba(0,0,0,0.5);
-}
-.t-bar {
-  background: var(--bg3); padding: 12px 16px;
-  display: flex; align-items: center; gap: 7px;
-  border-bottom: 1px solid var(--border);
-}
+.terminal { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: var(--ff-mono); font-size: 13px; box-shadow: var(--glow), 0 40px 80px rgba(0,0,0,.5); }
+.t-bar { background: var(--bg3); padding: 12px 16px; display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--border); }
 .dot { width: 11px; height: 11px; border-radius: 50%; }
-.dr { background: #f06b6b; } .dy { background: #f0c84b; } .dg { background: var(--g); }
+.dr{background:#f06b6b;} .dy{background:#f0c84b;} .dg{background:var(--g);}
 .t-title { margin-left: 8px; font-size: 12px; color: var(--muted); }
 .t-body { padding: 22px 26px; line-height: 2; }
 .t-line { margin-bottom: 1px; }
-.tp { color: var(--g); }
-.tc { color: var(--text); }
-.to { color: var(--muted); padding-left: 14px; }
-.tk { color: var(--b); }
-.tv { color: var(--y); }
-.ts { color: var(--g); }
-.tcursor {
-  display: inline-block; width: 8px; height: 14px;
-  background: var(--g); vertical-align: middle; margin-left: 2px;
-  animation: blink 1.1s step-end infinite;
-}
+.tp{color:var(--g);} .tc{color:var(--text);} .to{color:var(--muted);padding-left:14px;}
+.tk{color:var(--b);} .tv{color:var(--y);} .ts-c{color:var(--g);}
+.tcursor { display: inline-block; width: 8px; height: 14px; background: var(--g); vertical-align: middle; margin-left: 2px; animation: blink 1.1s step-end infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
 /* COUNTERS */
-.counters {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1px; background: var(--border);
-  border: 1px solid var(--border); border-radius: 14px;
-  overflow: hidden; margin-top: 80px;
-}
-.counter-item {
-  background: var(--bg2); padding: 32px 28px; text-align: center;
-  transition: background 0.2s;
-}
+.counters { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 80px; }
+.counter-item { background: var(--bg2); padding: 32px 28px; text-align: center; transition: background 0.2s; }
 .counter-item:hover { background: var(--bg3); }
-.c-num {
-  font-family: var(--ff-display);
-  font-size: 42px; font-weight: 800; letter-spacing: -2px;
-  line-height: 1; margin-bottom: 8px;
-}
-.cg { color: var(--g); } .cb { color: var(--b); } .cy { color: var(--y); }
+.c-num { font-family: var(--ff-display); font-size: 42px; font-weight: 800; letter-spacing: -2px; line-height: 1; margin-bottom: 8px; }
+.cg{color:var(--g);} .cb{color:var(--b);} .cy{color:var(--y);}
 .c-lbl { font-family: var(--ff-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; line-height: 1.5; }
 
 /* ABOUT */
@@ -223,59 +105,28 @@ h2.heading {
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .about-body p { color: var(--muted); line-height: 1.9; margin-bottom: 18px; font-size: 15px; }
 .about-body p strong { color: var(--text); font-weight: 500; }
-
 .skill-blocks { display: flex; flex-direction: column; gap: 14px; }
-.skill-block {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 12px; padding: 20px 22px; transition: border-color 0.2s;
-}
+.skill-block { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; transition: border-color 0.2s; }
 .skill-block:hover { border-color: var(--borderh); }
 .sb-title { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
 .stags { display: flex; flex-wrap: wrap; gap: 7px; }
-.stag {
-  font-family: var(--ff-mono); font-size: 11px; font-weight: 500;
-  padding: 4px 12px; border-radius: 5px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  color: var(--text); transition: border-color 0.2s, color 0.2s;
-}
+.stag { font-family: var(--ff-mono); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 5px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text); transition: border-color 0.2s, color 0.2s; cursor: default; }
 .stag:hover { border-color: var(--g); color: var(--g); }
 .stag.hi { background: rgba(99,214,168,0.07); border-color: rgba(99,214,168,0.2); color: var(--g); }
 
 /* IMPACT */
 #impact { background: var(--bg); }
 .impact-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 56px; }
-.impact-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 14px; padding: 36px 28px;
-  position: relative; overflow: hidden;
-  transition: border-color 0.3s, transform 0.25s;
-}
+.impact-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 36px 28px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.25s; }
 .impact-card:hover { border-color: var(--borderh); transform: translateY(-5px); }
-.impact-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--g), var(--b));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s ease;
-}
+.impact-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,var(--g),var(--b)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
 .impact-card:hover::after { transform: scaleX(1); }
 .impact-num { font-family: var(--ff-display); font-size: 52px; font-weight: 800; letter-spacing: -2px; line-height: 1; margin-bottom: 10px; }
-.impact-num.g { color: var(--g); } .impact-num.b { color: var(--b); } .impact-num.y { color: var(--y); }
+.impact-num.g{color:var(--g);} .impact-num.b{color:var(--b);} .impact-num.y{color:var(--y);}
 .impact-desc strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
 .impact-desc span { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-/* WHY ME */
-.why-box {
-  background: var(--bg2); border: 1px solid rgba(99,214,168,0.18);
-  border-radius: 16px; padding: 52px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-  position: relative; overflow: hidden;
-}
-.why-box::before {
-  content: ''; position: absolute; bottom: -80px; right: -80px;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(99,214,168,0.06) 0%, transparent 65%);
-  pointer-events: none;
-}
+.why-box { background: var(--bg2); border: 1px solid rgba(99,214,168,0.18); border-radius: 16px; padding: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; position: relative; overflow: hidden; }
+.why-box::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle,rgba(99,214,168,.06) 0%,transparent 65%); pointer-events: none; }
 .why-title { font-family: var(--ff-display); font-size: 26px; font-weight: 800; letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 28px; }
 .why-title span { color: var(--g); }
 .why-pts { list-style: none; display: flex; flex-direction: column; gap: 16px; }
@@ -283,12 +134,7 @@ h2.heading {
 .why-pts li::before { content: '›'; position: absolute; left: 0; color: var(--g); font-size: 16px; line-height: 1.5; }
 .why-pts li strong { color: var(--text); font-weight: 500; }
 .trust-list { display: flex; flex-direction: column; gap: 14px; }
-.trust-item {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 10px; padding: 18px 20px;
-  display: flex; align-items: center; gap: 14px;
-  transition: border-color 0.2s, transform 0.2s;
-}
+.trust-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; transition: border-color 0.2s, transform 0.2s; }
 .trust-item:hover { border-color: var(--b); transform: translateX(4px); }
 .ti-icon { font-size: 20px; width: 42px; height: 42px; background: rgba(79,184,240,0.08); border: 1px solid rgba(79,184,240,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .ti-copy strong { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
@@ -300,31 +146,34 @@ h2.heading {
 .svc-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 32px 26px; transition: border-color 0.3s, transform 0.2s; }
 .svc-card:hover { border-color: var(--borderh); transform: translateY(-3px); }
 .svc-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
-.ig { background: rgba(99,214,168,0.08); border: 1px solid rgba(99,214,168,0.18); }
-.ib { background: rgba(79,184,240,0.08);  border: 1px solid rgba(79,184,240,0.18); }
-.iy { background: rgba(240,200,75,0.08);  border: 1px solid rgba(240,200,75,0.18); }
+.ig{background:rgba(99,214,168,.08);border:1px solid rgba(99,214,168,.18);}
+.ib{background:rgba(79,184,240,.08);border:1px solid rgba(79,184,240,.18);}
+.iy{background:rgba(240,200,75,.08);border:1px solid rgba(240,200,75,.18);}
 .svc-name { font-family: var(--ff-display); font-size: 17px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 10px; }
 .svc-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
 .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.svc-tag { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 4px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--muted); }
+.svc-tag { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 4px; background: rgba(255,255,255,.03); border: 1px solid var(--border); color: var(--muted); }
 
 /* PROJECTS */
 #projects { background: var(--bg); }
 .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
 .proj-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 36px; display: flex; flex-direction: column; gap: 14px; transition: border-color 0.3s; }
-.proj-card:hover { border-color: rgba(99,214,168,0.25); }
+.proj-card:hover { border-color: rgba(99,214,168,.25); }
 .proj-card.wide { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .proj-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .pbadge { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
-.pp { background: rgba(99,214,168,0.1); color: var(--g); border: 1px solid rgba(99,214,168,0.2); }
-.po { background: rgba(79,184,240,0.1);  color: var(--b); border: 1px solid rgba(79,184,240,0.2); }
+.pp{background:rgba(99,214,168,.1);color:var(--g);border:1px solid rgba(99,214,168,.2);}
+.po{background:rgba(79,184,240,.1);color:var(--b);border:1px solid rgba(79,184,240,.2);}
 .proj-name { font-family: var(--ff-display); font-size: 21px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; }
 .proj-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
-.proj-impact { background: rgba(99,214,168,0.05); border: 1px solid rgba(99,214,168,0.12); border-radius: 8px; padding: 14px 16px; }
+.proj-impact { background: rgba(99,214,168,.05); border: 1px solid rgba(99,214,168,.12); border-radius: 8px; padding: 14px 16px; }
 .pil { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--g); margin-bottom: 5px; }
 .pit { font-size: 13px; color: var(--text); line-height: 1.6; }
 .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 .stk { font-family: var(--ff-mono); font-size: 11px; padding: 4px 10px; border-radius: 4px; background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+.proj-links { display: flex; gap: 12px; margin-top: 4px; }
+.proj-link { font-family: var(--ff-mono); font-size: 11px; color: var(--g); text-decoration: none; display: flex; align-items: center; gap: 4px; transition: opacity 0.2s; }
+.proj-link:hover { opacity: 0.7; }
 
 /* EXPERIENCE */
 #experience { background: var(--bg2); }
@@ -332,8 +181,8 @@ h2.heading {
 .timeline::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--border); }
 .tl-item { position: relative; margin-bottom: 56px; }
 .tl-item:last-child { margin-bottom: 0; }
-.tl-dot { position: absolute; left: -32px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--g); border: 2px solid var(--bg2); box-shadow: 0 0 0 3px rgba(99,214,168,0.18); }
-.tl-dot.dm { background: var(--muted); box-shadow: 0 0 0 3px rgba(96,104,128,0.15); }
+.tl-dot { position: absolute; left: -32px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--g); border: 2px solid var(--bg2); box-shadow: 0 0 0 3px rgba(99,214,168,.18); }
+.tl-dot.dm { background: var(--muted); box-shadow: 0 0 0 3px rgba(96,104,128,.15); }
 .tl-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-bottom: 6px; }
 .tl-role { font-family: var(--ff-display); font-size: 20px; font-weight: 700; letter-spacing: -0.4px; }
 .tl-period { font-family: var(--ff-mono); font-size: 11px; color: var(--muted); background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; white-space: nowrap; }
@@ -366,7 +215,7 @@ footer a { color: var(--g); text-decoration: none; }
 /* REVEAL */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.show { opacity: 1; transform: translateY(0); }
-.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+.d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.3s;}
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
@@ -384,13 +233,20 @@ footer a { color: var(--g); text-decoration: none; }
 </head>
 <body>
 
+<!-- Loading screen -->
+<div id="loader">
+  <div class="loader-logo">nitin<span>.</span>dev</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- Custom cursor -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- NAV -->
+<!-- NAV (shell — filled by JS) -->
 <nav>
   <a href="#hero" class="nav-logo">nitin<span>.</span>dev</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#impact">Impact</a></li>
     <li><a href="#services">Services</a></li>
@@ -401,22 +257,63 @@ footer a { color: var(--g); text-decoration: none; }
   <a href="#contact" class="nav-btn">Let's Talk</a>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="container">
-    <div class="hero-inner">
+<!-- All sections are empty shells — JS fills them from data.json -->
+<section id="hero"><div class="container" id="hero-content"></div></section>
+<section id="about"><div class="container sec" id="about-content"></div></section>
+<section id="impact"><div class="container sec" id="impact-content"></div></section>
+<section id="services"><div class="container sec" id="services-content"></div></section>
+<section id="projects"><div class="container sec" id="projects-content"></div></section>
+<section id="experience"><div class="container sec" id="experience-content"></div></section>
+<section id="contact"><div class="container sec" id="contact-content"></div></section>
+<footer id="footer-content"></footer>
+
+<script>
+// ─── CURSOR ───────────────────────────────────────────────────
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function anim(){
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(anim);
+})();
+
+// ─── HELPERS ──────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const h = (tag, cls, html, attrs='') => `<${tag} ${cls?`class="${cls}"`:''} ${attrs}>${html}</${tag}>`;
+
+// ─── BUILDERS — each fn takes data and returns HTML string ────
+
+function buildHero(d) {
+  const meta = d.meta;
+  const termLines = [
+    `<div class="t-line"><span class="tp">❯ </span><span class="tc">cat profile.json</span></div>`,
+    `<div class="t-line" style="margin-top:10px"><span class="to">{</span></div>`,
+    `<div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"name"</span>: <span class="ts-c">"${meta.name}"</span>,</span></div>`,
+    `<div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"role"</span>: <span class="ts-c">"${meta.role}"</span>,</span></div>`,
+    `<div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"location"</span>: <span class="ts-c">"${meta.location}"</span></span></div>`,
+    `<div class="t-line"><span class="to">}</span></div>`,
+    `<div class="t-line" style="margin-top:12px"><span class="tp">❯ </span><span class="tcursor"></span></div>`
+  ].join('');
+
+  const counters = (d.counters||[]).map(c => `
+    <div class="counter-item">
+      <div class="c-num ${c.color}" ${c.animated?`data-target="${c.target}" data-suffix="${c.suffix}"`:''}>${c.value}</div>
+      <div class="c-lbl">${c.label.replace('\n','<br/>')}</div>
+    </div>`).join('');
+
+  return `
+    <div class="hero-inner" style="padding-top:40px">
       <div>
-        <div class="status-pill"><span class="s-dot"></span>Available for opportunities</div>
+        ${meta.available ? `<div class="status-pill"><span class="s-dot"></span>${meta.availableText}</div>` : ''}
         <h1 class="hero-title">
           Building AI<br/>
           <span class="acc">that ships</span><br/>
           <span class="dm">to production.</span>
         </h1>
-        <p class="hero-desc">
-          I'm <strong>Nitin Sharma</strong> — an AI Engineer crafting
-          <strong>production-grade agents, LLM pipelines &amp; multi-agent systems</strong>
-          that eliminate manual workflows and move fast.
-        </p>
+        <p class="hero-desc">${meta.heroDesc}</p>
         <div class="hero-btns">
           <a href="#projects" class="btn-p">See My Work →</a>
           <a href="#contact" class="btn-o">Get in Touch</a>
@@ -426,285 +323,143 @@ footer a { color: var(--g); text-decoration: none; }
         <div class="terminal">
           <div class="t-bar">
             <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
-            <span class="t-title">nitin@dev ~ profile.json</span>
+            <span class="t-title">${meta.name.toLowerCase().replace(' ','.')}@dev ~ profile.json</span>
           </div>
-          <div class="t-body">
-            <div class="t-line"><span class="tp">❯ </span><span class="tc">cat profile.json</span></div>
-            <div class="t-line" style="margin-top:10px"><span class="to">{</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"name"</span>: <span class="ts">"Nitin Sharma"</span>,</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"role"</span>: <span class="ts">"AI Engineer"</span>,</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"exp"</span>: <span class="ts">"1+ year production AI"</span>,</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"stack"</span>: [</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ts">"LangChain"</span>, <span class="ts">"LangGraph"</span>, <span class="ts">"Agno"</span>,</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;&nbsp;&nbsp;<span class="ts">"Pipecat"</span>, <span class="ts">".NET"</span>, <span class="ts">"FastAPI"</span></span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;],</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"leetcode"</span>: <span class="tv">1790</span>, <span class="tk">"rank"</span>: <span class="ts">"top 8%"</span>,</span></div>
-            <div class="t-line"><span class="to">&nbsp;&nbsp;<span class="tk">"location"</span>: <span class="ts">"Gurugram, India"</span></span></div>
-            <div class="t-line"><span class="to">}</span></div>
-            <div class="t-line" style="margin-top:12px"><span class="tp">❯ </span><span class="tcursor"></span></div>
-          </div>
+          <div class="t-body">${termLines}</div>
         </div>
       </div>
     </div>
-    <div class="counters reveal">
-      <div class="counter-item">
-        <div class="c-num cg" data-target="70" data-suffix="%">0%</div>
-        <div class="c-lbl">Analyst requests<br/>eliminated at Sonar</div>
-      </div>
-      <div class="counter-item">
-        <div class="c-num cb" data-target="50" data-suffix="%">0%</div>
-        <div class="c-lbl">Manual effort cut<br/>via voice AI</div>
-      </div>
-      <div class="counter-item">
-        <div class="c-num cy">₹10L</div>
-        <div class="c-lbl">Annual savings<br/>on support chatbot</div>
-      </div>
-      <div class="counter-item">
-        <div class="c-num cg">Top 8%</div>
-        <div class="c-lbl">LeetCode global<br/>rank · 1790 rating</div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="counters reveal">${counters}</div>`;
+}
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container sec">
+function buildAbout(d) {
+  const a = d.about;
+  const paras = (a.paragraphs||[]).map(p=>`<p>${p}</p>`).join('');
+  const groups = (a.skillGroups||[]).map(g=>{
+    const tags = (g.skills||[]).map(s=>`<span class="stag ${s.highlight?'hi':''}">${s.name}</span>`).join('');
+    return `<div class="skill-block"><div class="sb-title">${g.title}</div><div class="stags">${tags}</div></div>`;
+  }).join('');
+  return `
     <div class="about-grid">
       <div class="reveal">
         <span class="tag-label">About</span>
         <h2 class="heading">Code that does<br/>the heavy lifting.</h2>
-        <div class="about-body">
-          <p>I graduated from JC Bose University with a B.Tech in Computer Engineering (Data Science) — <strong>CGPA 8.68</strong>. But what matters more is what I've built since.</p>
-          <p>In just over a year, I've shipped <strong>production AI systems at two companies</strong> — a fintech giant and a B2B SaaS startup — that measurably eliminated manual workflows worth lakhs per year.</p>
-          <p>My edge: I own the <strong>full stack end-to-end</strong>. LLM orchestration, backend, containers, delivery. No handoff, no gaps, faster iteration.</p>
-        </div>
+        <div class="about-body">${paras}</div>
       </div>
-      <div class="skill-blocks reveal d1">
-        <div class="skill-block">
-          <div class="sb-title">AI &amp; Agentic Frameworks</div>
-          <div class="stags">
-            <span class="stag hi">LangChain</span><span class="stag hi">LangGraph</span><span class="stag hi">Agno</span><span class="stag hi">Pipecat</span>
-            <span class="stag">MS Agent Framework</span><span class="stag">Hugging Face</span><span class="stag">n8n</span><span class="stag">RAG</span><span class="stag">MCP</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <div class="sb-title">Languages &amp; Backend</div>
-          <div class="stags">
-            <span class="stag">Python</span><span class="stag">C#</span><span class="stag">SQL</span>
-            <span class="stag">.NET Core</span><span class="stag">ASP.NET Core</span><span class="stag">FastAPI</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <div class="sb-title">Infra &amp; Tools</div>
-          <div class="stags">
-            <span class="stag">Docker</span><span class="stag">Git</span><span class="stag">GitHub Actions</span>
-            <span class="stag">ElevenLabs</span><span class="stag">Twilio</span><span class="stag">Whisper</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="skill-blocks reveal d1">${groups}</div>
+    </div>`;
+}
 
-<!-- IMPACT -->
-<section id="impact">
-  <div class="container sec">
+function buildImpact(d) {
+  const imp = d.impact;
+  const cards = (imp.cards||[]).map((c,i)=>`
+    <div class="impact-card reveal ${i>0?'d'+i:''}">
+      <div class="impact-num ${c.color}">${c.metric}</div>
+      <div class="impact-desc"><strong>${c.title}</strong><span>${c.desc}</span></div>
+    </div>`).join('');
+  const pts = (imp.whyPoints||[]).map(p=>`<li>${p}</li>`).join('');
+  const trust = (imp.trustItems||[]).map(t=>`
+    <div class="trust-item">
+      <div class="ti-icon">${t.icon}</div>
+      <div class="ti-copy"><strong>${t.title}</strong><span>${t.desc}</span></div>
+    </div>`).join('');
+  return `
     <div class="reveal" style="margin-bottom:60px">
       <span class="tag-label">Impact &amp; Why Me</span>
       <h2 class="heading">Real results.<br/>Not just code.</h2>
       <p class="subtext">Every project I've worked on has a measurable business outcome attached to it.</p>
     </div>
-    <div class="impact-cards">
-      <div class="impact-card reveal">
-        <div class="impact-num g">70%</div>
-        <div class="impact-desc">
-          <strong>Analyst requests eliminated</strong>
-          <span>Agno-based AI at Sonar: leaders ask in plain English, get live dashboards — no SQL, no analyst handoff.</span>
-        </div>
-      </div>
-      <div class="impact-card reveal d1">
-        <div class="impact-num b">50%</div>
-        <div class="impact-desc">
-          <strong>Manual effort cut</strong>
-          <span>Voice booking assistant with Pipecat + Whisper + ElevenLabs + Twilio. Automated bookings, fewer missed appointments.</span>
-        </div>
-      </div>
-      <div class="impact-card reveal d2">
-        <div class="impact-num y">₹10L</div>
-        <div class="impact-desc">
-          <strong>Annual cost saved</strong>
-          <span>Replaced a paid support service with an in-house LangChain + RAG chatbot. Better accuracy, zero recurring cost.</span>
-        </div>
-      </div>
-    </div>
+    <div class="impact-cards">${cards}</div>
     <div class="why-box reveal">
       <div>
         <h3 class="why-title">Why hire me over someone with a<br/><span>better college or more years?</span></h3>
-        <ul class="why-pts">
-          <li><strong>I ship production AI, not demos.</strong> Every system I've built is running live with real users solving real problems.</li>
-          <li><strong>I own the full stack.</strong> From LLM orchestration to API to container — no handoffs, faster iteration.</li>
-          <li><strong>I think in business outcomes.</strong> "70% fewer analyst requests" isn't luck — it's building exactly what the stakeholder needed.</li>
-          <li><strong>I pick up new tech fast.</strong> Pipecat, Agno, MCP — in production within weeks of first seeing them.</li>
-          <li><strong>I've led delivery too.</strong> Coordinated a 5-member external team, owned requirements and end-to-end technical delivery.</li>
-        </ul>
+        <ul class="why-pts">${pts}</ul>
       </div>
-      <div class="trust-list">
-        <div class="trust-item">
-          <div class="ti-icon">🏆</div>
-          <div class="ti-copy"><strong>LeetCode Top 8% Globally</strong><span>Rating 1790 — strong fundamentals beyond just tooling</span></div>
-        </div>
-        <div class="trust-item">
-          <div class="ti-icon">📜</div>
-          <div class="ti-copy"><strong>GenAI Coursera — 92.5%</strong><span>Certificate of Excellence, theory + practice</span></div>
-        </div>
-        <div class="trust-item">
-          <div class="ti-icon">🏗️</div>
-          <div class="ti-copy"><strong>2 production AI systems in 1 year</strong><span>Multi-agent fintech AI + 3 shipped products at Sonar</span></div>
-        </div>
-        <div class="trust-item">
-          <div class="ti-icon">👥</div>
-          <div class="ti-copy"><strong>Led cross-functional delivery</strong><span>5-member external team, full end-to-end ownership</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="trust-list">${trust}</div>
+    </div>`;
+}
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="container sec">
+function buildServices(d) {
+  const cards = (d.services||[]).map((s,i)=>`
+    <div class="svc-card reveal ${i%3>0?'d'+(i%3):''}">
+      <div class="svc-icon ${s.iconClass}">${s.icon}</div>
+      <div class="svc-name">${s.name}</div>
+      <p class="svc-desc">${s.desc}</p>
+      <div class="svc-tags">${(s.tags||[]).map(t=>`<span class="svc-tag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+  return `
     <div class="reveal" style="margin-bottom:56px">
       <span class="tag-label">Services</span>
       <h2 class="heading">What I build<br/>for you.</h2>
       <p class="subtext">From "we need AI for this" to live systems. No fluff, no vendor lock-in.</p>
     </div>
-    <div class="svc-grid">
-      <div class="svc-card reveal"><div class="svc-icon ig">🤖</div><div class="svc-name">AI Agent Development</div><p class="svc-desc">Custom autonomous agents that reason, plan, and act across tools, APIs, and databases. Multi-agent architectures for complex workflows.</p><div class="svc-tags"><span class="svc-tag">LangGraph</span><span class="svc-tag">Agno</span><span class="svc-tag">MS Agent Framework</span><span class="svc-tag">MCP</span></div></div>
-      <div class="svc-card reveal d1"><div class="svc-icon ib">🔍</div><div class="svc-name">RAG &amp; Knowledge Systems</div><p class="svc-desc">Connect your LLM to your data. Document Q&amp;A, enterprise knowledge bases, semantic search over structured and unstructured data.</p><div class="svc-tags"><span class="svc-tag">RAG</span><span class="svc-tag">Vector DBs</span><span class="svc-tag">LangChain</span><span class="svc-tag">Embeddings</span></div></div>
-      <div class="svc-card reveal d2"><div class="svc-icon iy">🎙️</div><div class="svc-name">Voice AI Assistants</div><p class="svc-desc">Conversational voice agents for booking, support, and automation. Real-time speech, natural TTS, telephony integration.</p><div class="svc-tags"><span class="svc-tag">Pipecat</span><span class="svc-tag">Whisper</span><span class="svc-tag">ElevenLabs</span><span class="svc-tag">Twilio</span></div></div>
-      <div class="svc-card reveal"><div class="svc-icon ig">⚙️</div><div class="svc-name">LLM Backend Engineering</div><p class="svc-desc">Production APIs and microservices for AI features. FastAPI or .NET backends, Docker deployments, clean architecture.</p><div class="svc-tags"><span class="svc-tag">FastAPI</span><span class="svc-tag">ASP.NET Core</span><span class="svc-tag">Docker</span></div></div>
-      <div class="svc-card reveal d1"><div class="svc-icon ib">💬</div><div class="svc-name">AI Chatbots &amp; Support</div><p class="svc-desc">Replace expensive SaaS tools with purpose-built chatbots trained on your data. Better answers, lower cost, full control.</p><div class="svc-tags"><span class="svc-tag">LangChain</span><span class="svc-tag">RAG</span><span class="svc-tag">Fine-tuning</span></div></div>
-      <div class="svc-card reveal d2"><div class="svc-icon iy">📊</div><div class="svc-name">BI &amp; Dashboard Automation</div><p class="svc-desc">Natural language to dashboard. Let your team ask questions and see live data — no SQL, no analyst required.</p><div class="svc-tags"><span class="svc-tag">Agno</span><span class="svc-tag">Text-to-SQL</span><span class="svc-tag">n8n</span></div></div>
-    </div>
-  </div>
-</section>
+    <div class="svc-grid">${cards}</div>`;
+}
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container sec">
+function buildProjects(d) {
+  const cards = (d.projects||[]).map((p,i)=>{
+    const links = [
+      p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" class="proj-link">↗ Live</a>` : '',
+      p.githubUrl ? `<a href="${p.githubUrl}" target="_blank" class="proj-link">⌥ GitHub</a>` : ''
+    ].filter(Boolean).join('');
+    const stack = (p.stack||[]).map(s=>`<span class="stk">${s}</span>`).join('');
+    const inner = `
+      <div>
+        <div class="proj-meta"><span class="pbadge ${p.badgeClass}">${p.type} · ${p.company}</span></div>
+        <h3 class="proj-name">${p.name}</h3>
+        <p class="proj-desc">${p.desc}</p>
+        <div class="proj-impact"><div class="pil">↑ Impact</div><div class="pit">${p.impact}</div></div>
+        ${links ? `<div class="proj-links">${links}</div>` : ''}
+      </div>
+      <div><div class="proj-stack">${stack}</div></div>`;
+    return `<div class="proj-card ${p.featured?'wide':''} reveal ${i%2>0&&!p.featured?'d1':''}">${inner}</div>`;
+  }).join('');
+  return `
     <div class="reveal" style="margin-bottom:56px">
       <span class="tag-label">Projects</span>
       <h2 class="heading">Things I've<br/>actually shipped.</h2>
       <p class="subtext">Production systems with real business outcomes — not side projects.</p>
     </div>
-    <div class="proj-grid">
-      <div class="proj-card wide reveal">
-        <div>
-          <div class="proj-meta"><span class="pbadge pp">Production · FNZ Group</span></div>
-          <h3 class="proj-name">Advisor AI — Multi-Agent Financial Intelligence</h3>
-          <p class="proj-desc">A multi-agent system using Microsoft Agent Framework and ASP.NET Core serving two channels: financial advisors get AI-generated portfolio insights, end clients self-serve personalised financial analysis — eliminating manual reporting overhead entirely.</p>
-          <div class="proj-impact"><div class="pil">↑ Impact</div><div class="pit">Eliminated manual reporting across two business channels. Advisors no longer pull portfolio data manually before client meetings.</div></div>
-        </div>
-        <div>
-          <div class="proj-stack"><span class="stk">MS Agent Framework</span><span class="stk">ASP.NET Core (C#)</span><span class="stk">RAG</span><span class="stk">Plugins</span><span class="stk">MCP</span><span class="stk">Multi-agent</span></div>
-        </div>
-      </div>
-      <div class="proj-card reveal">
-        <div class="proj-meta"><span class="pbadge pp">Production · Sonar Technologies</span></div>
-        <h3 class="proj-name">Natural Language BI Agent</h3>
-        <p class="proj-desc">Agno-based AI giving business leaders instant dashboards from natural language — handling 3× more question types than typical BI tools with live data.</p>
-        <div class="proj-impact"><div class="pil">↑ Impact</div><div class="pit">~70% reduction in routine analyst requests.</div></div>
-        <div class="proj-stack"><span class="stk">Agno</span><span class="stk">Text-to-SQL</span><span class="stk">Python</span></div>
-      </div>
-      <div class="proj-card reveal d1">
-        <div class="proj-meta"><span class="pbadge pp">Production · Sonar Technologies</span></div>
-        <h3 class="proj-name">Voice AI Booking Assistant</h3>
-        <p class="proj-desc">Real-time voice agent using Pipecat, Whisper, ElevenLabs and Twilio. Automates bookings via natural conversation, sends instant confirmations.</p>
-        <div class="proj-impact"><div class="pil">↑ Impact</div><div class="pit">50% less manual effort. Increased revenue by reducing missed bookings.</div></div>
-        <div class="proj-stack"><span class="stk">Pipecat</span><span class="stk">Whisper</span><span class="stk">ElevenLabs</span><span class="stk">Twilio</span></div>
-      </div>
-      <div class="proj-card reveal">
-        <div class="proj-meta"><span class="pbadge pp">Production · Sonar Technologies</span></div>
-        <h3 class="proj-name">LLM Customer Support Chatbot</h3>
-        <p class="proj-desc">LangChain + RAG chatbot containerized with Docker. Replaced a paid third-party support service with a better in-house solution.</p>
-        <div class="proj-impact"><div class="pil">↑ Impact</div><div class="pit">Replaced a ₹10L/year service. Better accuracy, full data control.</div></div>
-        <div class="proj-stack"><span class="stk">LangChain</span><span class="stk">RAG</span><span class="stk">Docker</span></div>
-      </div>
-      <div class="proj-card reveal d1">
-        <div class="proj-meta"><span class="pbadge po">Open Source</span></div>
-        <h3 class="proj-name">HR Agent — Employee Management Bot</h3>
-        <p class="proj-desc">Conversational HR agent using LangGraph + LangChain. Leave applications and profile views through natural chat — no portal navigation needed.</p>
-        <div class="proj-impact"><div class="pil">↑ Impact</div><div class="pit">40% less portal navigation time. Non-technical staff adoption improved.</div></div>
-        <div class="proj-stack"><span class="stk">LangGraph</span><span class="stk">LangChain</span><span class="stk">PostgreSQL</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="proj-grid">${cards}</div>`;
+}
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container sec">
+function buildExperience(d) {
+  const items = (d.experience||[]).map(e=>`
+    <div class="tl-item reveal">
+      <div class="tl-dot ${e.dim?'dm':''}"></div>
+      <div class="tl-head">
+        <div><div class="tl-role">${e.role}</div><div class="tl-company">${e.company}</div></div>
+        <span class="tl-period">${e.period}</span>
+      </div>
+      <ul class="tl-buls">${(e.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>
+    </div>`).join('');
+  return `
     <div class="reveal" style="margin-bottom:56px">
       <span class="tag-label">Experience</span>
       <h2 class="heading">Where I've<br/>built things.</h2>
     </div>
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-head">
-          <div><div class="tl-role">Analyst Developer</div><div class="tl-company">FNZ Group</div></div>
-          <span class="tl-period">March 2026 – Present</span>
-        </div>
-        <ul class="tl-buls">
-          <li>Building <strong>Advisor AI</strong> — multi-agent financial intelligence using Microsoft Agent Framework, ASP.NET Core (C#), RAG, Plugins, and MCP.</li>
-          <li>Powers two channels: advisors get AI-generated portfolio insights; clients self-serve personalised financial analysis.</li>
-          <li>Eliminated manual reporting overhead that required significant analyst time before every client conversation.</li>
-        </ul>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-head">
-          <div><div class="tl-role">Software Developer</div><div class="tl-company">Sonar Technologies International</div></div>
-          <span class="tl-period">July 2024 – Feb 2026</span>
-        </div>
-        <ul class="tl-buls">
-          <li>Built <strong>Agno-based NL BI agent</strong> handling 3× more question types than standard BI tools — reduced analyst requests by ~70%.</li>
-          <li>Developed <strong>voice AI assistant</strong> (Pipecat + Whisper + ElevenLabs + Twilio) — cut manual booking effort by 50%, increased revenue.</li>
-          <li>Replaced a <strong>₹10L/year paid support chatbot</strong> with in-house LangChain + RAG solution — better accuracy, full data ownership.</li>
-          <li>Coordinated 5-member external team for Limousine Pre-Allocation System — owned requirements, tracking, and end-to-end delivery.</li>
-        </ul>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-dot dm"></div>
-        <div class="tl-head">
-          <div><div class="tl-role">B.Tech — Computer Engineering (Data Science)</div><div class="tl-company">JC Bose University of Science &amp; Technology, YMCA</div></div>
-          <span class="tl-period">Dec 2020 – Jun 2024</span>
-        </div>
-        <ul class="tl-buls">
-          <li>CGPA: <strong>8.68</strong> — graduated with distinction.</li>
-          <li>Data Science &amp; GenAI — Coursera Certificate of Excellence, <strong>92.5%</strong>.</li>
-          <li>LeetCode: <strong>1790 rating, top 8% globally</strong>.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="timeline">${items}</div>`;
+}
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container sec">
+function buildContact(d) {
+  const m = d.meta;
+  const links = [
+    { icon:'✉️', href:`mailto:${m.email}`,  val: m.email,   lbl:'Email' },
+    { icon:'💼', href: m.linkedin, target:true, val:'LinkedIn',         lbl:'Connect professionally' },
+    { icon:'🐙', href: m.github,  target:true, val: m.github.replace('https://',''), lbl:'See what I\'m building' },
+    { icon:'📱', href:`tel:${m.phone}`,       val: m.phone,  lbl: m.location }
+  ].map(l=>`
+    <a href="${l.href}" ${l.target?'target="_blank"':''} class="clink">
+      <span class="ci">${l.icon}</span>
+      <div><div>${l.val}</div><div class="clbl">${l.lbl}</div></div>
+    </a>`).join('');
+  return `
     <div class="contact-grid">
       <div class="reveal">
         <span class="tag-label">Contact</span>
         <h2 class="ctitle">Let's build<br/>something great.</h2>
         <p class="subtext">Open to full-time roles, contract work, and interesting AI problems. I respond fast.</p>
-        <div class="clinks">
-          <a href="mailto:nitinvasishtha16@gmail.com" class="clink"><span class="ci">✉️</span><div><div>nitinvasishtha16@gmail.com</div><div class="clbl">Email</div></div></a>
-          <a href="https://linkedin.com/in/nitin-sharma" target="_blank" class="clink"><span class="ci">💼</span><div><div>LinkedIn</div><div class="clbl">Connect professionally</div></div></a>
-          <a href="https://github.com/nitin1625" target="_blank" class="clink"><span class="ci">🐙</span><div><div>github.com/nitin1625</div><div class="clbl">See what I'm building</div></div></a>
-          <a href="tel:+918708239493" class="clink"><span class="ci">📱</span><div><div>+91 87082 39493</div><div class="clbl">Gurugram, Haryana, India</div></div></a>
-        </div>
+        <div class="clinks">${links}</div>
       </div>
       <div class="reveal d1">
         <form class="cform" onsubmit="handleForm(event)">
@@ -715,67 +470,110 @@ footer a { color: var(--g); text-decoration: none; }
           <button type="submit" class="btn-p" style="width:fit-content">Send Message →</button>
         </form>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span>© 2026 Nitin Sharma — <a href="https://github.com/nitin1625/Portfolio">View source on GitHub</a></span>
-  <span>Gurugram, India · Open to remote &amp; hybrid · Last updated: March 22, 2026</span>
-</footer>
-
-<script>
-// Custom cursor
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function animC(){
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-  rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animC);
-})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='54px';ring.style.height='54px';ring.style.opacity='0.5';});
-  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.opacity='1';});
-});
-
-// Scroll reveal
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Counter animation
-const cio=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    const el=e.target,target=+el.dataset.target,suffix=el.dataset.suffix||'';
-    let s=0;const step=target/60;
-    (function tick(){s=Math.min(s+step,target);el.textContent=Math.floor(s)+suffix;if(s<target)requestAnimationFrame(tick);})();
-    cio.unobserve(el);
-  });
-},{threshold:0.5});
-document.querySelectorAll('[data-target]').forEach(el=>cio.observe(el));
-
-// Active nav
-const secs=document.querySelectorAll('section[id]');
-const navAs=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let c='';
-  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id;});
-  navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'var(--g)':'';});
-},{passive:true});
-
-// Form
-function handleForm(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('button');
-  btn.textContent='✓ Sent!';btn.style.background='#1a3d2b';btn.style.color='var(--g)';btn.disabled=true;
-  setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.style.color='';btn.disabled=false;e.target.reset();},3000);
+    </div>`;
 }
+
+function buildFooter(d) {
+  const m = d.meta;
+  return `
+    <span>© 2026 ${m.name} — <a href="${m.github}">View source on GitHub</a></span>
+    <span>${m.location} · Open to remote &amp; hybrid · Last updated: March 22, 2026</span>`;
+}
+
+// ─── MAIN: fetch data.json, build everything ──────────────────
+async function init() {
+  try {
+    const res = await fetch('data.json');
+    if (!res.ok) throw new Error('data.json not found');
+    const data = await res.json();
+
+    // Update page title
+    document.title = `${data.meta.name} — ${data.meta.role}`;
+
+    // Build all sections
+    $('hero-content').innerHTML     = buildHero(data);
+    $('about-content').innerHTML    = buildAbout(data);
+    $('impact-content').innerHTML   = buildImpact(data);
+    $('services-content').innerHTML = buildServices(data);
+    $('projects-content').innerHTML = buildProjects(data);
+    $('experience-content').innerHTML = buildExperience(data);
+    $('contact-content').innerHTML  = buildContact(data);
+    $('footer-content').innerHTML   = buildFooter(data);
+
+    // Start interactions after DOM is built
+    initInteractions();
+
+  } catch(err) {
+    console.error('Failed to load data.json:', err);
+    // Fallback: show error in hero
+    $('hero-content').innerHTML = `<div style="padding:80px 0;text-align:center;color:var(--r)">
+      <p style="font-family:var(--ff-mono);font-size:14px">Error loading data.json — ${err.message}</p>
+    </div>`;
+  } finally {
+    // Hide loader
+    setTimeout(()=>{ $('loader').classList.add('hide'); }, 900);
+  }
+}
+
+// ─── INTERACTIONS (scroll reveal, counters, cursor, nav) ──────
+function initInteractions() {
+
+  // Cursor hover effect
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter',()=>{ ring.style.width='54px'; ring.style.height='54px'; ring.style.opacity='0.5'; });
+    el.addEventListener('mouseleave',()=>{ ring.style.width='36px'; ring.style.height='36px'; ring.style.opacity='1'; });
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Counter animation
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      if (!target) return;
+      let s = 0; const step = target / 60;
+      (function tick() { s = Math.min(s+step,target); el.textContent = Math.floor(s)+suffix; if(s<target) requestAnimationFrame(tick); })();
+      cio.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-target]').forEach(el => cio.observe(el));
+
+  // Active nav
+  const secs = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let c = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) c = s.id; });
+    navAs.forEach(a => { a.style.color = a.getAttribute('href') === '#'+c ? 'var(--g)' : ''; });
+  }, { passive: true });
+}
+
+// ─── CONTACT FORM ─────────────────────────────────────────────
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '✓ Sent!';
+  btn.style.background = '#1a3d2b';
+  btn.style.color = 'var(--g)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Message →';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3000);
+}
+
+// Kick off
+init();
 </script>
 </body>
 </html>

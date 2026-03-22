@@ -1,153 +1,265 @@
 {
-  "name": "Nitin Sharma",
-  "title": "AI Engineer",
-  "tagline": "Building AI that actually ships.",
-  "location": "Gurugram, Haryana, India",
-  "email": "nitinvasishtha16@gmail.com",
-  "phone": "+91-8708239493",
-  "linkedin": "https://linkedin.com/in/nitin-sharma",
-  "github": "https://github.com/nitin-sharma",
-  "available": true,
-
-  "about": {
-    "summary": "AI Engineer with 1+ year of experience building production-grade AI agents, LLM-powered applications, and multi-agent systems. Skilled in agentic AI frameworks, RAG pipelines, and LLM orchestration.",
-    "cgpa": "8.68",
-    "leetcode_rating": 1790,
-    "leetcode_percentile": "top 8%"
+  "meta": {
+    "name": "Nitin Sharma",
+    "role": "AI Engineer",
+    "tagline": "Building AI that ships to production.",
+    "available": true,
+    "availableText": "Available for opportunities",
+    "email": "nitinvasishtha16@gmail.com",
+    "phone": "+91-8708239493",
+    "linkedin": "https://linkedin.com/in/nitin-sharma",
+    "github": "https://github.com/nitin1625",
+    "location": "Gurugram, Haryana, India",
+    "heroDesc": "I'm <strong>Nitin Sharma</strong> — an AI Engineer with 1+ year of hands-on experience building <strong>production-grade LLM applications, agentic systems, and RAG pipelines</strong> that reduce operational costs, eliminate manual workflows, and improve decision velocity."
   },
 
-  "stats": [
-    { "number": "70%",   "label": "Reduction in analyst requests at Sonar" },
-    { "number": "₹10L",  "label": "Annual savings from replacing paid chatbot" },
-    { "number": "50%",   "label": "Less manual effort via voice AI assistant" },
-    { "number": "Top 8%","label": "LeetCode global ranking (1790 rating)" }
+  "counters": [
+    { "value": "70%",    "animated": true,  "target": 70, "suffix": "%", "color": "cg", "label": "Analyst requests\neliminated at Sonar" },
+    { "value": "50%",    "animated": true,  "target": 50, "suffix": "%", "color": "cb", "label": "Manual booking\neffort reduced" },
+    { "value": "₹10L",  "animated": false,                               "color": "cy", "label": "Annual vendor cost\neliminated in 3 months" },
+    { "value": "Top 8%", "animated": false,                              "color": "cg", "label": "LeetCode global\nrank · 1790 rating" }
   ],
 
-  "skills": {
-    "ai_frameworks": ["LangChain", "LangGraph", "Agno", "Pipecat", "MS Agent Framework", "Hugging Face", "n8n", "RAG Pipelines", "MCP"],
-    "languages": ["Python", "C#", "SQL", "C++"],
-    "backend": [".NET Core", "ASP.NET Core", "FastAPI", "RESTful API Design"],
-    "tools": ["Git", "Docker", "Postman", "SSMS", "DBeaver", "Bitbucket", "Jira", "Visual Studio"]
+  "about": {
+    "paragraphs": [
+      "I graduated from JC Bose University with a B.Tech in Computer Engineering (Data Science) — <strong>CGPA 8.68</strong>. But what matters more is what I've shipped since.",
+      "In just over a year across two companies, I've built <strong>production AI systems</strong> — a multi-agent financial platform serving 500+ advisors at FNZ, and three distinct AI products at Sonar Technologies — each with measurable, documented business outcomes.",
+      "My edge: I own the <strong>full stack end-to-end</strong>. From LLM orchestration and vector search to ASP.NET/FastAPI backends, Docker deployments, and Azure infra. No handoff needed, faster iteration, fewer gaps."
+    ],
+    "skillGroups": [
+      {
+        "title": "Agentic Frameworks",
+        "skills": [
+          { "name": "LangChain",              "highlight": true  },
+          { "name": "LangGraph",              "highlight": true  },
+          { "name": "Agno",                   "highlight": true  },
+          { "name": "Pipecat",                "highlight": true  },
+          { "name": "Microsoft Agent Framework", "highlight": false },
+          { "name": "MCP",                    "highlight": false },
+          { "name": "n8n",                    "highlight": false },
+          { "name": "Hugging Face",           "highlight": false }
+        ]
+      },
+      {
+        "title": "Languages & Backend",
+        "skills": [
+          { "name": "Python",        "highlight": false },
+          { "name": "C#",            "highlight": false },
+          { "name": "SQL",           "highlight": false },
+          { "name": "C++",           "highlight": false },
+          { "name": "ASP.NET Core",  "highlight": false },
+          { "name": "FastAPI",       "highlight": false },
+          { "name": "Docker",        "highlight": false },
+          { "name": "Azure",         "highlight": false }
+        ]
+      },
+      {
+        "title": "Databases & Vector Search",
+        "skills": [
+          { "name": "Qdrant",       "highlight": false },
+          { "name": "pgvector",     "highlight": false },
+          { "name": "ChromaDB",     "highlight": false },
+          { "name": "CosmosDB",     "highlight": false },
+          { "name": "PostgreSQL",   "highlight": false },
+          { "name": "SQL Server",   "highlight": false }
+        ]
+      },
+      {
+        "title": "Tools & Practices",
+        "skills": [
+          { "name": "Git",                      "highlight": false },
+          { "name": "GitHub Actions",           "highlight": false },
+          { "name": "Postman",                  "highlight": false },
+          { "name": "Jira",                     "highlight": false },
+          { "name": "Multi-agent Orchestration","highlight": false },
+          { "name": "RAG Pipelines",            "highlight": false },
+          { "name": "Plugin Architecture",      "highlight": false }
+        ]
+      }
+    ]
+  },
+
+  "impact": {
+    "cards": [
+      {
+        "metric": "70%",
+        "color": "g",
+        "title": "Analyst requests eliminated",
+        "desc": "Collapsed a 5-step analyst workflow into a single-prompt interaction. Data-to-decision time dropped from hours to under 2 minutes."
+      },
+      {
+        "metric": "50%",
+        "color": "b",
+        "title": "Booking effort cut",
+        "desc": "Voice AI agent handling end-to-end appointment scheduling at sub-2s latency. Recovered revenue from missed-booking leakage."
+      },
+      {
+        "metric": "₹10L",
+        "color": "y",
+        "title": "Vendor cost eliminated",
+        "desc": "Replaced a ₹10L/year ($12K) third-party support vendor with an in-house RAG chatbot. Full ROI achieved within 3 months of deployment."
+      }
+    ],
+    "whyPoints": [
+      "<strong>I ship production AI, not demos.</strong> Every system I've built is running live — serving 500+ advisors at FNZ, handling real bookings, resolving real support queries.",
+      "<strong>I own the full stack.</strong> LLM orchestration, vector DBs, backend APIs, containers, Azure infra — I don't need a handoff chain. That means faster cycles and no gaps.",
+      "<strong>I measure business outcomes, not lines of code.</strong> 70% fewer analyst requests, ₹10L saved, ROI in 3 months — these are the metrics I optimize for.",
+      "<strong>I adopt emerging tech at production speed.</strong> Pipecat, Agno, MCP, Microsoft Agent Framework — I pick them up and ship them in weeks, not quarters.",
+      "<strong>I've led delivery, not just contributed.</strong> Coordinated a 5-member external team, owned requirements, progress tracking, and end-to-end technical delivery."
+    ],
+    "trustItems": [
+      { "icon": "🏆", "title": "LeetCode Top 8% Globally",          "desc": "Rating 1790 — strong CS fundamentals beyond just AI tooling" },
+      { "icon": "📜", "title": "GenAI Coursera — 92.5%",             "desc": "Certificate of Excellence — grounded in theory and practice" },
+      { "icon": "🏗️", "title": "500+ advisors served in production", "desc": "Multi-agent financial platform live at FNZ Group" },
+      { "icon": "👥", "title": "Led cross-functional delivery",       "desc": "5-member external team, full requirements-to-delivery ownership" }
+    ]
   },
 
   "services": [
     {
       "icon": "🤖",
+      "iconClass": "ig",
       "name": "AI Agent Development",
-      "description": "Custom autonomous agents that reason, plan, and act across tools, APIs, and databases. Multi-agent architectures for complex workflows.",
-      "tags": ["LangGraph", "Agno", "MS Agent Framework", "Tool Use", "MCP"]
+      "desc": "Custom autonomous agents and multi-agent systems that reason, plan, and act across tools, APIs, and databases. Built for production scale.",
+      "tags": ["LangGraph", "Agno", "Microsoft Agent Framework", "MCP", "Multi-agent Orchestration"]
     },
     {
       "icon": "🔍",
+      "iconClass": "ib",
       "name": "RAG & Knowledge Systems",
-      "description": "Connect your LLM to your data. Document Q&A, enterprise knowledge bases, semantic search over structured and unstructured data.",
-      "tags": ["RAG Pipelines", "Vector DBs", "LangChain", "Embeddings"]
+      "desc": "Connect your LLM to your enterprise data. Document Q&A, semantic search, knowledge bases over structured and unstructured data.",
+      "tags": ["RAG", "Qdrant", "ChromaDB", "pgvector", "LangChain", "Embeddings"]
     },
     {
       "icon": "🎙️",
+      "iconClass": "iy",
       "name": "Voice AI Assistants",
-      "description": "Conversational voice agents for booking, support, and automation. Real-time speech recognition, natural TTS, telephony integration.",
-      "tags": ["Pipecat", "Whisper", "ElevenLabs", "Twilio"]
+      "desc": "Real-time voice agents for booking, support, and automation. Sub-2s latency, natural TTS, full telephony integration.",
+      "tags": ["Pipecat", "Whisper STT", "ElevenLabs TTS", "Twilio WebRTC"]
     },
     {
       "icon": "⚙️",
+      "iconClass": "ig",
       "name": "LLM Backend Engineering",
-      "description": "Production APIs and microservices for AI features. FastAPI or .NET backends, Docker deployments, clean architecture.",
-      "tags": ["FastAPI", "ASP.NET Core", "Docker", "RESTful APIs"]
+      "desc": "Production APIs and microservices powering AI features. FastAPI or ASP.NET Core backends, Docker, Azure deployments.",
+      "tags": ["FastAPI", "ASP.NET Core", "Docker", "Azure", "CosmosDB"]
     },
     {
       "icon": "💬",
+      "iconClass": "ib",
       "name": "AI Chatbots & Support Automation",
-      "description": "Replace expensive SaaS tools with purpose-built chatbots trained on your data. Better answers, lower cost, full control.",
-      "tags": ["LangChain", "RAG", "Fine-tuning", "Custom UI"]
+      "desc": "Replace expensive support vendors with purpose-built chatbots on your data. Better resolution rates, full data ownership, zero recurring vendor cost.",
+      "tags": ["LangChain", "RAG", "Gemini", "Qdrant", "Docker"]
     },
     {
       "icon": "📊",
+      "iconClass": "iy",
       "name": "BI & Dashboard Automation",
-      "description": "Natural language to dashboard. Let your team ask questions and see live data — no SQL, no BI analyst required for routine queries.",
-      "tags": ["Agno", "Text-to-SQL", "n8n", "Data Viz"]
+      "desc": "Natural language to live dashboard. Collapse multi-step analyst workflows into a single prompt interaction.",
+      "tags": ["Agno", "Text-to-SQL", "Gemini", "Chroma", "n8n"]
     }
   ],
 
   "projects": [
     {
-      "name": "Advisor AI — Multi-Agent Financial Intelligence",
+      "name": "Advisor AI — Multi-Agent Financial Platform",
       "company": "FNZ Group",
-      "type": "production",
+      "type": "Production",
+      "badgeClass": "pp",
       "featured": true,
-      "description": "A multi-agent system built with Microsoft Agent Framework and ASP.NET Core. Powers financial advisors with AI-generated portfolio insights and lets end clients self-serve personalised financial analysis.",
-      "impact": "Eliminated manual reporting overhead across two business channels.",
-      "stack": ["MS Agent Framework", "ASP.NET Core (C#)", "RAG", "Plugins", "MCP", "Multi-agent"]
+      "desc": "Architected a production multi-agent financial platform serving two concurrent user channels: an advisor-facing engine delivering AI-generated portfolio insights, and a client-facing self-serve financial analysis portal. Serves a 500+ advisor base and eliminates manual reporting overhead entirely.",
+      "impact": "Eliminated manual reporting overhead for 500+ advisors. Clients self-serve personalised financial analysis without analyst involvement.",
+      "stack": ["Microsoft Agent Framework", "ASP.NET Core (C#)", "RAG", "MCP", "CosmosDB", "Azure", "Multi-agent"],
+      "liveUrl": "",
+      "githubUrl": ""
     },
     {
       "name": "Natural Language BI Agent",
       "company": "Sonar Technologies",
-      "type": "production",
-      "description": "Agno-based AI that gives business leaders instant dashboards from natural language — handling 3× more question types than typical BI tools with live data.",
-      "impact": "~70% reduction in routine analyst requests.",
-      "stack": ["Agno", "Text-to-SQL", "Live Data", "Python"]
+      "type": "Production",
+      "badgeClass": "pp",
+      "featured": false,
+      "desc": "Engineered an NL BI agent resolving 3× the query breadth of legacy BI tooling. Collapsed a 5-step analyst workflow (request → SQL → dashboard → review) into a single-prompt interaction.",
+      "impact": "70% reduction in routine analyst requests. Data-to-decision time dropped from hours to under 2 minutes.",
+      "stack": ["Agno", "Python", "Gemini", "ChromaDB", "Text-to-SQL"],
+      "liveUrl": "",
+      "githubUrl": ""
     },
     {
-      "name": "Voice AI Booking Assistant",
+      "name": "Voice AI Booking Agent",
       "company": "Sonar Technologies",
-      "type": "production",
-      "description": "Real-time voice agent using Pipecat, Whisper, ElevenLabs and Twilio WebRTC. Automates bookings via natural conversation, sends instant confirmations.",
-      "impact": "50% reduction in manual effort. Increased revenue by reducing missed bookings.",
-      "stack": ["Pipecat", "Whisper", "ElevenLabs", "Twilio"]
+      "type": "Production",
+      "badgeClass": "pp",
+      "featured": false,
+      "desc": "Real-time voice AI handling end-to-end appointment scheduling autonomously at sub-2s response latency. Pipecat pipeline with Whisper STT, ElevenLabs TTS, and Twilio WebRTC.",
+      "impact": "50% reduction in manual booking effort. Recovered revenue from missed-booking leakage. Measurable uplift in booking completion rate.",
+      "stack": ["Pipecat", "Whisper STT", "ElevenLabs TTS", "Twilio WebRTC", "Python"],
+      "liveUrl": "",
+      "githubUrl": ""
     },
     {
-      "name": "LLM Customer Support Chatbot",
+      "name": "RAG Customer Support Chatbot",
       "company": "Sonar Technologies",
-      "type": "production",
-      "description": "Custom chatbot using LangChain and RAG, containerized with Docker. Replaced a paid third-party support service.",
-      "impact": "Replaced a ₹10L/year service. Better query handling, full data control.",
-      "stack": ["LangChain", "RAG", "Docker"]
+      "type": "Production",
+      "badgeClass": "pp",
+      "featured": false,
+      "desc": "Production RAG chatbot replacing a third-party support vendor costing ₹10L/year ($12K). Improved first-contact resolution and absorbed the majority of inbound queries without human escalation.",
+      "impact": "Full ROI within 3 months. Eliminated ₹10L/year vendor cost. Improved first-contact resolution rate.",
+      "stack": ["LangChain", "Gemini", "Qdrant", "Docker", "Python"],
+      "liveUrl": "",
+      "githubUrl": ""
     },
     {
-      "name": "HR Agent — Employee Management Bot",
+      "name": "Employee Management System Bot",
       "company": "Personal Project",
-      "type": "oss",
-      "github_url": "https://github.com/nitin-sharma/hr-agent",
-      "description": "Conversational HR agent using LangGraph and LangChain. Employees can apply for leave and view profiles through natural chat.",
-      "impact": "40% reduction in portal navigation time.",
-      "stack": ["LangGraph", "LangChain", "PostgreSQL"]
+      "type": "Open Source",
+      "badgeClass": "po",
+      "featured": false,
+      "desc": "Stateful multi-turn HR agent enabling employees to apply for leave, query payroll data, and retrieve profile information through natural language. LangGraph persistent state for multi-step workflows. Direct PostgreSQL tool-calling with p95 query response under 800ms.",
+      "impact": "40% reduction in average task completion time vs legacy web portal. Eliminated HR support ticket volume for routine queries.",
+      "stack": ["LangGraph", "LangChain", "ChromaDB", "Gemini", "PostgreSQL"],
+      "liveUrl": "",
+      "githubUrl": "https://github.com/nitin1625"
     }
   ],
 
   "experience": [
     {
-      "role": "Analyst Developer",
+      "role": "Analyst Developer — AI",
       "company": "FNZ Group",
       "period": "March 2026 – Present",
+      "current": true,
+      "dim": false,
       "bullets": [
-        "Building Advisor AI — a multi-agent financial intelligence system using Microsoft Agent Framework, ASP.NET Core, RAG, Plugins, and MCP.",
-        "Powers two channels: advisors get AI-generated portfolio insights; end clients self-serve personalised financial analysis.",
-        "Eliminated manual reporting overhead that previously required significant analyst time before every client conversation."
+        "Architected <strong>Advisor AI</strong> — a production multi-agent financial platform using Microsoft Agent Framework, ASP.NET Core, RAG, MCP, and Cosmos DB.",
+        "Serves two concurrent channels: advisor-facing engine for AI-generated portfolio insights and a client-facing self-serve financial analysis portal.",
+        "Eliminated manual reporting overhead for a <strong>500+ advisor base</strong> — advisors no longer manually compile portfolio data before client meetings."
       ]
     },
     {
-      "role": "Software Developer",
+      "role": "Software Developer — AI & Backend",
       "company": "Sonar Technologies International",
       "period": "July 2024 – Feb 2026",
+      "current": false,
+      "dim": false,
       "bullets": [
-        "Built an Agno-based AI agent for natural-language BI, handling 3× more question types than standard BI tools and reducing analyst requests by ~70%.",
-        "Developed a voice-based AI assistant using Pipecat, Whisper, ElevenLabs and Twilio — cutting manual booking effort by 50% and increasing revenue.",
-        "Replaced a ₹10L/year paid support chatbot with an in-house LangChain + RAG solution with better accuracy and full data ownership.",
-        "Coordinated a 5-member external team for the Point Engineer Limousine Pre-Allocation System — owned requirements, progress tracking, and end-to-end technical delivery."
+        "Engineered a <strong>natural-language BI agent</strong> (Agno, Gemini, Chroma) resolving 3× the query breadth of legacy BI — collapsed 5-step analyst workflow into a single prompt, cutting analyst requests by <strong>70%</strong> and decision time from hours to under 2 minutes.",
+        "Built a <strong>real-time voice AI booking agent</strong> (Pipecat, Whisper, ElevenLabs, Twilio WebRTC) at sub-2s latency — reduced manual booking effort by <strong>50%</strong>, recovered missed-booking revenue.",
+        "Delivered a <strong>production RAG support chatbot</strong> (LangChain, Gemini, Qdrant, Docker) replacing a ₹10L/year vendor — improved first-contact resolution, full ROI within 3 months.",
+        "Coordinated a 5-member external team for the Limousine Pre-Allocation System — owned requirements, progress tracking, and end-to-end technical delivery."
+      ]
+    },
+    {
+      "role": "B.Tech — Computer Engineering (Data Science)",
+      "company": "J.C. Bose University of Science and Technology, YMCA",
+      "period": "Dec 2020 – Jun 2024",
+      "current": false,
+      "dim": true,
+      "bullets": [
+        "CGPA: <strong>8.68</strong> — graduated with distinction.",
+        "Data Science & GenAI specialization — Coursera Certificate of Excellence, <strong>92.5%</strong>.",
+        "LeetCode: <strong>1790 rating, top 8% globally</strong>."
       ]
     }
-  ],
-
-  "education": {
-    "degree": "Bachelor of Technology in Computer Engineering (Data Science)",
-    "university": "J.C. Bose University of Science and Technology, YMCA",
-    "period": "Dec 2020 – Jun 2024",
-    "cgpa": "8.68"
-  },
-
-  "achievements": [
-    "LeetCode Rating: 1790 — top 8% globally",
-    "Data Science & GenAI (Coursera) — Certificate of Excellence, 92.50%",
-    "Coordinated 5-member external team, owned end-to-end technical delivery"
   ]
 }
