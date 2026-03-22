@@ -56,7 +56,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://YOUR_USERNAME.github.io/portfolio/
+            https://nitin1625.github.io/portfolio/
           uploadArtifacts: true
           temporaryPublicStorage: true
         continue-on-error: true   # don't block deploy if audit fails
