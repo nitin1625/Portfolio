@@ -1,0 +1,153 @@
+{
+  "name": "Nitin Sharma",
+  "title": "AI Engineer",
+  "tagline": "Building AI that actually ships.",
+  "location": "Gurugram, Haryana, India",
+  "email": "nitinvasishtha16@gmail.com",
+  "phone": "+91-8708239493",
+  "linkedin": "https://linkedin.com/in/nitin-sharma",
+  "github": "https://github.com/nitin-sharma",
+  "available": true,
+
+  "about": {
+    "summary": "AI Engineer with 1+ year of experience building production-grade AI agents, LLM-powered applications, and multi-agent systems. Skilled in agentic AI frameworks, RAG pipelines, and LLM orchestration.",
+    "cgpa": "8.68",
+    "leetcode_rating": 1790,
+    "leetcode_percentile": "top 8%"
+  },
+
+  "stats": [
+    { "number": "70%",   "label": "Reduction in analyst requests at Sonar" },
+    { "number": "₹10L",  "label": "Annual savings from replacing paid chatbot" },
+    { "number": "50%",   "label": "Less manual effort via voice AI assistant" },
+    { "number": "Top 8%","label": "LeetCode global ranking (1790 rating)" }
+  ],
+
+  "skills": {
+    "ai_frameworks": ["LangChain", "LangGraph", "Agno", "Pipecat", "MS Agent Framework", "Hugging Face", "n8n", "RAG Pipelines", "MCP"],
+    "languages": ["Python", "C#", "SQL", "C++"],
+    "backend": [".NET Core", "ASP.NET Core", "FastAPI", "RESTful API Design"],
+    "tools": ["Git", "Docker", "Postman", "SSMS", "DBeaver", "Bitbucket", "Jira", "Visual Studio"]
+  },
+
+  "services": [
+    {
+      "icon": "🤖",
+      "name": "AI Agent Development",
+      "description": "Custom autonomous agents that reason, plan, and act across tools, APIs, and databases. Multi-agent architectures for complex workflows.",
+      "tags": ["LangGraph", "Agno", "MS Agent Framework", "Tool Use", "MCP"]
+    },
+    {
+      "icon": "🔍",
+      "name": "RAG & Knowledge Systems",
+      "description": "Connect your LLM to your data. Document Q&A, enterprise knowledge bases, semantic search over structured and unstructured data.",
+      "tags": ["RAG Pipelines", "Vector DBs", "LangChain", "Embeddings"]
+    },
+    {
+      "icon": "🎙️",
+      "name": "Voice AI Assistants",
+      "description": "Conversational voice agents for booking, support, and automation. Real-time speech recognition, natural TTS, telephony integration.",
+      "tags": ["Pipecat", "Whisper", "ElevenLabs", "Twilio"]
+    },
+    {
+      "icon": "⚙️",
+      "name": "LLM Backend Engineering",
+      "description": "Production APIs and microservices for AI features. FastAPI or .NET backends, Docker deployments, clean architecture.",
+      "tags": ["FastAPI", "ASP.NET Core", "Docker", "RESTful APIs"]
+    },
+    {
+      "icon": "💬",
+      "name": "AI Chatbots & Support Automation",
+      "description": "Replace expensive SaaS tools with purpose-built chatbots trained on your data. Better answers, lower cost, full control.",
+      "tags": ["LangChain", "RAG", "Fine-tuning", "Custom UI"]
+    },
+    {
+      "icon": "📊",
+      "name": "BI & Dashboard Automation",
+      "description": "Natural language to dashboard. Let your team ask questions and see live data — no SQL, no BI analyst required for routine queries.",
+      "tags": ["Agno", "Text-to-SQL", "n8n", "Data Viz"]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Advisor AI — Multi-Agent Financial Intelligence",
+      "company": "FNZ Group",
+      "type": "production",
+      "featured": true,
+      "description": "A multi-agent system built with Microsoft Agent Framework and ASP.NET Core. Powers financial advisors with AI-generated portfolio insights and lets end clients self-serve personalised financial analysis.",
+      "impact": "Eliminated manual reporting overhead across two business channels.",
+      "stack": ["MS Agent Framework", "ASP.NET Core (C#)", "RAG", "Plugins", "MCP", "Multi-agent"]
+    },
+    {
+      "name": "Natural Language BI Agent",
+      "company": "Sonar Technologies",
+      "type": "production",
+      "description": "Agno-based AI that gives business leaders instant dashboards from natural language — handling 3× more question types than typical BI tools with live data.",
+      "impact": "~70% reduction in routine analyst requests.",
+      "stack": ["Agno", "Text-to-SQL", "Live Data", "Python"]
+    },
+    {
+      "name": "Voice AI Booking Assistant",
+      "company": "Sonar Technologies",
+      "type": "production",
+      "description": "Real-time voice agent using Pipecat, Whisper, ElevenLabs and Twilio WebRTC. Automates bookings via natural conversation, sends instant confirmations.",
+      "impact": "50% reduction in manual effort. Increased revenue by reducing missed bookings.",
+      "stack": ["Pipecat", "Whisper", "ElevenLabs", "Twilio"]
+    },
+    {
+      "name": "LLM Customer Support Chatbot",
+      "company": "Sonar Technologies",
+      "type": "production",
+      "description": "Custom chatbot using LangChain and RAG, containerized with Docker. Replaced a paid third-party support service.",
+      "impact": "Replaced a ₹10L/year service. Better query handling, full data control.",
+      "stack": ["LangChain", "RAG", "Docker"]
+    },
+    {
+      "name": "HR Agent — Employee Management Bot",
+      "company": "Personal Project",
+      "type": "oss",
+      "github_url": "https://github.com/nitin-sharma/hr-agent",
+      "description": "Conversational HR agent using LangGraph and LangChain. Employees can apply for leave and view profiles through natural chat.",
+      "impact": "40% reduction in portal navigation time.",
+      "stack": ["LangGraph", "LangChain", "PostgreSQL"]
+    }
+  ],
+
+  "experience": [
+    {
+      "role": "Analyst Developer",
+      "company": "FNZ Group",
+      "period": "March 2026 – Present",
+      "bullets": [
+        "Building Advisor AI — a multi-agent financial intelligence system using Microsoft Agent Framework, ASP.NET Core, RAG, Plugins, and MCP.",
+        "Powers two channels: advisors get AI-generated portfolio insights; end clients self-serve personalised financial analysis.",
+        "Eliminated manual reporting overhead that previously required significant analyst time before every client conversation."
+      ]
+    },
+    {
+      "role": "Software Developer",
+      "company": "Sonar Technologies International",
+      "period": "July 2024 – Feb 2026",
+      "bullets": [
+        "Built an Agno-based AI agent for natural-language BI, handling 3× more question types than standard BI tools and reducing analyst requests by ~70%.",
+        "Developed a voice-based AI assistant using Pipecat, Whisper, ElevenLabs and Twilio — cutting manual booking effort by 50% and increasing revenue.",
+        "Replaced a ₹10L/year paid support chatbot with an in-house LangChain + RAG solution with better accuracy and full data ownership.",
+        "Coordinated a 5-member external team for the Point Engineer Limousine Pre-Allocation System — owned requirements, progress tracking, and end-to-end technical delivery."
+      ]
+    }
+  ],
+
+  "education": {
+    "degree": "Bachelor of Technology in Computer Engineering (Data Science)",
+    "university": "J.C. Bose University of Science and Technology, YMCA",
+    "period": "Dec 2020 – Jun 2024",
+    "cgpa": "8.68"
+  },
+
+  "achievements": [
+    "LeetCode Rating: 1790 — top 8% globally",
+    "Data Science & GenAI (Coursera) — Certificate of Excellence, 92.50%",
+    "Coordinated 5-member external team, owned end-to-end technical delivery"
+  ]
+}

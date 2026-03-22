@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin Sharma — AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,214,168,0.055) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(99,214,168,.07); border: 1px solid rgba(99,214,168,.18);
+      border-radius: 20px; padding: 6px 14px; margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.75); }
+    }
+
+    .hero-title {
+      font-family: var(--font-d);
+      font-size: clamp(44px, 5.5vw, 70px);
+      font-weight: 800; letter-spacing: -2.5px; line-height: 1.02;
+      margin-bottom: 22px;
+    }
+    .hero-title .hi { color: var(--muted); font-size: .6em; letter-spacing: 0; font-weight: 400; display: block; margin-bottom: 4px; }
+    .hero-title .accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 16px; color: var(--muted); line-height: 1.85;
+      margin-bottom: 36px; max-width: 440px;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Terminal card */
+    .terminal {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden; font-size: 13px;
+      font-family: 'Courier New', monospace;
+    }
+    .t-bar {
+      background: var(--bg3); padding: 11px 16px;
+      display: flex; align-items: center; gap: 7px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dr { background: #f06b6b; } .dy { background: #f0a84b; } .dg { background: var(--accent); }
+    .t-title { margin-left: 8px; font-size: 11px; color: var(--muted); font-family: var(--font-b); }
+    .t-body { padding: 20px 22px; line-height: 2; }
+    .tp  { color: var(--accent); }
+    .tk  { color: var(--blue); }
+    .tv  { color: var(--amber); }
+    .ts  { color: var(--accent); }
+    .tm  { color: var(--muted); padding-left: 14px; display: block; }
+    .cursor {
+      display: inline-block; width: 8px; height: 14px;
+      background: var(--accent); vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--bg2); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+    }
+
+    .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 14px; font-size: 15px; }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    /* Stats */
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px;
+    }
+    .stat-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 20px;
+      transition: border-color .2s, transform .2s;
+    }
+    .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .stat-num {
+      font-family: var(--font-d); font-size: 34px; font-weight: 800;
+      color: var(--accent); letter-spacing: -1px; line-height: 1;
+    }
+    .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+    /* Skills panel */
+    .skills-panel { display: flex; flex-direction: column; gap: 14px; }
+    .skill-group {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+    }
+    .sg-title {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+    }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+    .stag {
+      font-size: 12px; font-weight: 500; padding: 4px 11px;
+      border-radius: 5px; background: rgba(255,255,255,.04);
+      border: 1px solid var(--border); color: var(--text);
+      transition: border-color .2s, color .2s;
+    }
+    .stag:hover { border-color: var(--blue); color: var(--blue); }
+    .stag.hi { background: rgba(99,214,168,.07); border-color: rgba(99,214,168,.2); color: var(--accent); }
+
+    /* ── FOOTER NAV ── */
+    .page-footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 28px 48px; display: flex; justify-content: space-between;
+      align-items: center; margin-left: 0;
+    }
+    .page-footer span { font-size: 13px; color: var(--muted); }
+    .next-link {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 600; color: var(--accent);
+      text-decoration: none; transition: gap .2s;
+    }
+    .next-link:hover { gap: 14px; }
+
+    @media (max-width: 768px) {
+      .hero-inner, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .page-footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="hero-badge">Open to opportunities</div>
+          <h1 class="hero-title">
+            <span class="hi">Hey, I'm</span>
+            Nitin<br/>
+            <span class="accent">Sharma.</span>
+          </h1>
+          <p class="hero-sub">
+            <strong>AI Engineer</strong> building production-grade agents, LLM pipelines, and multi-agent systems that <strong>cut costs and eliminate manual workflows</strong>.
+          </p>
+          <div class="hero-actions">
+            <a href="work.html" class="btn-primary">View My Work →</a>
+            <a href="contact.html" class="btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="terminal fade fade-d2">
+          <div class="t-bar">
+            <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+            <span class="t-title">nitin@portfolio ~ profile.json</span>
+          </div>
+          <div class="t-body">
+            <span><span class="tp">$ </span>cat profile.json</span>
+            <span class="tm">{</span>
+            <span class="tm">&nbsp;<span class="tk">"role"</span>: <span class="ts">"AI Engineer"</span>,</span>
+            <span class="tm">&nbsp;<span class="tk">"exp"</span>: <span class="tv">"1+ year production AI"</span>,</span>
+            <span class="tm">&nbsp;<span class="tk">"stack"</span>: [<span class="ts">"LangChain"</span>, <span class="ts">"Agno"</span>,</span>
+            <span class="tm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ts">"LangGraph"</span>, <span class="ts">"Pipecat"</span>,</span>
+            <span class="tm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ts">".NET"</span>, <span class="ts">"FastAPI"</span>],</span>
+            <span class="tm">&nbsp;<span class="tk">"leetcode"</span>: <span class="tv">"top 8% · 1790"</span>,</span>
+            <span class="tm">&nbsp;<span class="tk">"location"</span>: <span class="ts">"Gurugram, India"</span></span>
+            <span class="tm">}</span>
+            <span><span class="tp">$ </span><span class="cursor"></span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="section-wrap">
+        <div class="about-grid">
+
+          <div class="fade">
+            <p class="section-tag">About Me</p>
+            <h2 class="section-title">Code that<br/>does the work.</h2>
+            <div class="about-text">
+              <p>I graduated from JC Bose University with a B.Tech in Computer Engineering (Data Science) with a <strong>CGPA of 8.68</strong> — but what defines me is what I've shipped since.</p>
+              <p>In just over a year, I've built <strong>production AI systems at two companies</strong> — a fintech and a B2B SaaS — that eliminated manual workflows worth lakhs per year.</p>
+              <p>My edge is the full stack: I can design the LLM pipeline, wire the backend, containerise it, and put it in front of users. <strong>No handoff. I own it end to end.</strong></p>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card fade fade-d1">
+                <div class="stat-num">70%</div>
+                <div class="stat-lbl">Reduction in analyst requests at Sonar</div>
+              </div>
+              <div class="stat-card fade fade-d2">
+                <div class="stat-num">₹10L</div>
+                <div class="stat-lbl">Annual savings from replacing paid chatbot</div>
+              </div>
+              <div class="stat-card fade fade-d3">
+                <div class="stat-num">50%</div>
+                <div class="stat-lbl">Less manual effort via voice AI assistant</div>
+              </div>
+              <div class="stat-card fade fade-d4">
+                <div class="stat-num">Top 8%</div>
+                <div class="stat-lbl">LeetCode globally · Rating 1790</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-panel fade fade-d2">
+            <div class="skill-group">
+              <div class="sg-title">AI & Agentic Frameworks</div>
+              <div class="tag-wrap">
+                <span class="stag hi">LangChain</span><span class="stag hi">LangGraph</span>
+                <span class="stag hi">Agno</span><span class="stag hi">Pipecat</span>
+                <span class="stag">MS Agent Framework</span><span class="stag">Hugging Face</span>
+                <span class="stag">n8n</span><span class="stag">RAG</span><span class="stag">MCP</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="sg-title">Languages & Backend</div>
+              <div class="tag-wrap">
+                <span class="stag">Python</span><span class="stag">C#</span>
+                <span class="stag">SQL</span><span class="stag">.NET Core</span>
+                <span class="stag">ASP.NET Core</span><span class="stag">FastAPI</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="sg-title">Infra & Tools</div>
+              <div class="tag-wrap">
+                <span class="stag">Docker</span><span class="stag">Git</span>
+                <span class="stag">GitHub Actions</span><span class="stag">Twilio</span>
+                <span class="stag">ElevenLabs</span><span class="stag">Whisper</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="sg-title">Education</div>
+              <div class="tag-wrap">
+                <span class="stag">B.Tech — Computer Engg (Data Science)</span>
+                <span class="stag">CGPA 8.68 · JC Bose University</span>
+                <span class="stag">GenAI Coursera — 92.5%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span>Nitin Sharma · AI Engineer</span>
+    <a href="work.html" class="next-link">Work & Experience <span>→</span></a>
+  </footer>
+
+</div>
+
+<script src="shared.js"></script>
+<script>injectSidebar('home');</script>
+</body>
+</html>
