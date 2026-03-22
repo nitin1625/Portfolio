@@ -33,14 +33,31 @@ jobs:
           with open('data.json') as f:
               data = json.load(f)
 
-          required = ['name', 'title', 'about', 'projects', 'services', 'experience']
-          missing = [k for k in required if k not in data]
+          # Top-level sections
+          top_required = ['meta', 'about', 'projects', 'services', 'experience']
+          missing_top = [k for k in top_required if k not in data]
 
-          if missing:
-              print(f"❌ Missing required fields: {missing}")
+          # Required fields inside meta
+          meta_required = ['name', 'role', 'email', 'github']
+          missing_meta = [k for k in meta_required if k not in data.get('meta', {})]
+
+          errors = []
+          if missing_top:
+              errors.append(f"Missing top-level sections: {missing_top}")
+          if missing_meta:
+              errors.append(f"Missing fields inside 'meta': {missing_meta}")
+
+          if errors:
+              for e in errors:
+                  print(f"❌ {e}")
               sys.exit(1)
 
-          print(f"✅ All required fields present: {required}")
+          print("✅ All required fields present!")
+          print(f"   name : {data['meta']['name']}")
+          print(f"   role : {data['meta']['role']}")
+          print(f"   projects : {len(data['projects'])} entries")
+          print(f"   services : {len(data['services'])} entries")
+          print(f"   experience: {len(data['experience'])} entries")
           EOF
 
   # ─── JOB 2: Run Lighthouse CI (performance audit) ────────────────────────────
@@ -56,7 +73,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://nitin1625.github.io/portfolio/
+            https://YOUR_USERNAME.github.io/portfolio/
           uploadArtifacts: true
           temporaryPublicStorage: true
         continue-on-error: true   # don't block deploy if audit fails
